@@ -1,0 +1,13 @@
+type User @model {
+	id: ID!
+	email: String!
+	challenges: [Challenges] @connection(keyName: "byChallenge", fields: ["id"])
+}
+
+type Challenges
+	@model
+	@key(name: "byChallenge", fields: ["challengeID", "content"]) {
+	id: ID!
+	challengeID: ID!
+	content: String!
+}
